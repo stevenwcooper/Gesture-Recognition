@@ -1,0 +1,13 @@
+﻿Build started 04/11/2013 14:05:18.
+     1>Project "C:\Users\Steven\Documents\FYP_Programs\FYPViewer\FYPViewer.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I. /I. /ZI /nologo /W4 /WX /MP /Od /Oy- /D _WINDLL /D _MBCS /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt main.cpp Viewer.cpp
+         main.cpp
+         Viewer.cpp
+     1>c:\users\steven\documents\fyp_programs\fypviewer\main.cpp(21): fatal error C1083: Cannot open include file: 'OpenNI.h': No such file or directory
+     1>c:\users\steven\documents\fyp_programs\fypviewer\viewer.h(24): fatal error C1083: Cannot open include file: 'OpenNI.h': No such file or directory (Viewer.cpp)
+     1>Done Building Project "C:\Users\Steven\Documents\FYP_Programs\FYPViewer\FYPViewer.vcxproj" (Build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:00.57

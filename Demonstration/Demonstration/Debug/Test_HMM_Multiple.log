@@ -1,0 +1,44 @@
+﻿Build started 05/03/2014 10:58:59.
+     1>Project "C:\Users\Steven\Documents\Reading University\Reading Unviersity Forth Year\Computer Vision for Interactive Applications\Test_HMM_Multiple\Test_HMM_Multiple.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I"C:\Program Files\OpenNI2\Include\\" /I. /ZI /nologo /W4 /WX /MP /Od /Oy- /D _WINDLL /D _MBCS /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt main.cpp tinystr.cpp tinyxml.cpp tinyxmlerror.cpp tinyxmlparser.cpp Viewer.cpp
+         main.cpp
+         tinystr.cpp
+         tinyxml.cpp
+         tinyxmlerror.cpp
+         tinyxmlparser.cpp
+         Viewer.cpp
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Steven\Documents\Reading University\Reading Unviersity Forth Year\Computer Vision for Interactive Applications\Test_HMM_Multiple\Debug\Test_HMM_Multiple.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Users\Steven\Documents\Reading University\Reading Unviersity Forth Year\Computer Vision for Interactive Applications\Test_HMM_Multiple\Debug\\" /LIBPATH:"C:\Program Files\OpenNI2\Lib\\" /LIBPATH:..\..\ThirdParty\GL /WX glut32.lib OpenNI2.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Steven\Documents\Reading University\Reading Unviersity Forth Year\Computer Vision for Interactive Applications\Test_HMM_Multiple\Debug\Test_HMM_Multiple.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Steven\Documents\Reading University\Reading Unviersity Forth Year\Computer Vision for Interactive Applications\Test_HMM_Multiple\Debug\Test_HMM_Multiple.lib" /MACHINE:X86 Debug\main.obj
+         Debug\tinystr.obj
+         Debug\tinyxml.obj
+         Debug\tinyxmlerror.obj
+         Debug\tinyxmlparser.obj
+         Debug\Viewer.obj
+     1>main.obj : error LNK2019: unresolved external symbol __imp__oniInitialize referenced in function "public: static enum openni::Status __cdecl openni::OpenNI::initialize(void)" (?initialize@OpenNI@openni@@SA?AW4Status@2@XZ)
+     1>main.obj : error LNK2019: unresolved external symbol __imp__oniShutdown referenced in function "public: static void __cdecl openni::OpenNI::shutdown(void)" (?shutdown@OpenNI@openni@@SAXXZ)
+     1>Viewer.obj : error LNK2001: unresolved external symbol __imp__oniShutdown
+     1>main.obj : error LNK2019: unresolved external symbol __imp__oniGetExtendedError referenced in function "public: static char const * __cdecl openni::OpenNI::getExtendedError(void)" (?getExtendedError@OpenNI@openni@@SAPBDXZ)
+     1>main.obj : error LNK2019: unresolved external symbol __imp__oniDeviceOpen referenced in function "public: enum openni::Status __thiscall openni::Device::open(char const *)" (?open@Device@openni@@QAE?AW4Status@2@PBD@Z)
+     1>main.obj : error LNK2019: unresolved external symbol __imp__oniDeviceClose referenced in function "public: void __thiscall openni::Device::close(void)" (?close@Device@openni@@QAEXXZ)
+     1>main.obj : error LNK2019: unresolved external symbol __imp__oniDeviceGetInfo referenced in function "private: enum openni::Status __thiscall openni::Device::_setHandle(struct _OniDevice *)" (?_setHandle@Device@openni@@AAE?AW4Status@2@PAU_OniDevice@@@Z)
+     1>main.obj : error LNK2019: unresolved external symbol __imp__oniDeviceCreateStream referenced in function "public: enum openni::Status __thiscall openni::VideoStream::create(class openni::Device const &,enum openni::SensorType)" (?create@VideoStream@openni@@QAE?AW4Status@2@ABVDevice@2@W4SensorType@2@@Z)
+     1>main.obj : error LNK2019: unresolved external symbol __imp__oniDeviceIsPropertySupported referenced in function "public: bool __thiscall openni::Device::isPropertySupported(int)const " (?isPropertySupported@Device@openni@@QBE_NH@Z)
+     1>main.obj : error LNK2019: unresolved external symbol __imp__oniDeviceIsCommandSupported referenced in function "public: bool __thiscall openni::Device::isCommandSupported(int)const " (?isCommandSupported@Device@openni@@QBE_NH@Z)
+     1>main.obj : error LNK2019: unresolved external symbol __imp__oniStreamDestroy referenced in function "public: void __thiscall openni::VideoStream::destroy(void)" (?destroy@VideoStream@openni@@QAEXXZ)
+     1>Viewer.obj : error LNK2001: unresolved external symbol __imp__oniStreamDestroy
+     1>main.obj : error LNK2019: unresolved external symbol __imp__oniStreamGetSensorInfo referenced in function "private: void __thiscall openni::VideoStream::_setHandle(struct _OniStream *)" (?_setHandle@VideoStream@openni@@AAEXPAU_OniStream@@@Z)
+     1>main.obj : error LNK2019: unresolved external symbol __imp__oniStreamStart referenced in function "public: enum openni::Status __thiscall openni::VideoStream::start(void)" (?start@VideoStream@openni@@QAE?AW4Status@2@XZ)
+     1>main.obj : error LNK2019: unresolved external symbol __imp__oniStreamIsPropertySupported referenced in function "public: bool __thiscall openni::VideoStream::isPropertySupported(int)const " (?isPropertySupported@VideoStream@openni@@QBE_NH@Z)
+     1>Viewer.obj : error LNK2019: unresolved external symbol __imp__oniWaitForAnyStream referenced in function "public: static enum openni::Status __cdecl openni::OpenNI::waitForAnyStream(class openni::VideoStream * *,int,int *,int)" (?waitForAnyStream@OpenNI@openni@@SA?AW4Status@2@PAPAVVideoStream@2@HPAHH@Z)
+     1>Viewer.obj : error LNK2019: unresolved external symbol __imp__oniStreamStop referenced in function "public: void __thiscall openni::VideoStream::stop(void)" (?stop@VideoStream@openni@@QAEXXZ)
+     1>Viewer.obj : error LNK2019: unresolved external symbol __imp__oniStreamReadFrame referenced in function "public: enum openni::Status __thiscall openni::VideoStream::readFrame(class openni::VideoFrameRef *)" (?readFrame@VideoStream@openni@@QAE?AW4Status@2@PAVVideoFrameRef@2@@Z)
+     1>Viewer.obj : error LNK2019: unresolved external symbol __imp__oniStreamGetProperty referenced in function "public: enum openni::Status __thiscall openni::VideoStream::getProperty(int,void *,int *)const " (?getProperty@VideoStream@openni@@QBE?AW4Status@2@HPAXPAH@Z)
+     1>Viewer.obj : error LNK2019: unresolved external symbol __imp__oniFrameRelease referenced in function "public: void __thiscall openni::VideoFrameRef::release(void)" (?release@VideoFrameRef@openni@@QAEXXZ)
+     1>Viewer.obj : error LNK2019: unresolved external symbol __imp__oniCoordinateConverterDepthToColor referenced in function "public: static enum openni::Status __cdecl openni::CoordinateConverter::convertDepthToColor(class openni::VideoStream const &,class openni::VideoStream const &,int,int,unsigned short,int *,int *)" (?convertDepthToColor@CoordinateConverter@openni@@SA?AW4Status@2@ABVVideoStream@2@0HHGPAH1@Z)
+     1>C:\Users\Steven\Documents\Reading University\Reading Unviersity Forth Year\Computer Vision for Interactive Applications\Test_HMM_Multiple\Debug\Test_HMM_Multiple.exe : fatal error LNK1120: 19 unresolved externals
+     1>Done Building Project "C:\Users\Steven\Documents\Reading University\Reading Unviersity Forth Year\Computer Vision for Interactive Applications\Test_HMM_Multiple\Test_HMM_Multiple.vcxproj" (Build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:05.12

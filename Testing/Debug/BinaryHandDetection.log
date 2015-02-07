@@ -1,0 +1,11 @@
+﻿Build started 27/11/2013 10:15:40.
+     1>Project "C:\Users\Steven\Documents\FYP_Programs\BinaryHandDetection\BinaryHandDetection.vcxproj" on node 2 (Build target(s)).
+     1>Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Steven\Documents\FYP_Programs\BinaryHandDetection\Debug\FYPDepthViewer.exe" /INCREMENTAL /NOLOGO /LIBPATH:C:\Users\Steven\Documents\FYP_Programs\BinaryHandDetection\Debug\ /LIBPATH:..\..\ThirdParty\GL /WX glut32.lib OpenNI2.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Steven\Documents\FYP_Programs\BinaryHandDetection\Debug\FYPDepthViewer.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Steven\Documents\FYP_Programs\BinaryHandDetection\Debug\FYPDepthViewer.lib" /MACHINE:X86 Debug\main.obj
+         Debug\Viewer.obj
+     1>LINK : fatal error LNK1104: cannot open file 'OpenNI2.lib'
+     1>Done Building Project "C:\Users\Steven\Documents\FYP_Programs\BinaryHandDetection\BinaryHandDetection.vcxproj" (Build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:00.10

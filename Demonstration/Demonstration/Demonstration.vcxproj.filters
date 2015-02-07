@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="GestureRecognition.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="tinystr.cpp" />
+    <ClCompile Include="tinyxml.cpp" />
+    <ClCompile Include="tinyxmlerror.cpp" />
+    <ClCompile Include="tinyxmlparser.cpp" />
+    <ClCompile Include="Viewer.cpp" />
+    <ClCompile Include="BlobDetection.cpp">
+      <Filter>Hand Detection</Filter>
+    </ClCompile>
+    <ClCompile Include="Gestures.cpp">
+      <Filter>Gestures</Filter>
+    </ClCompile>
+    <ClCompile Include="HMM.cpp">
+      <Filter>Classification</Filter>
+    </ClCompile>
+    <ClCompile Include="ImageMoment.cpp">
+      <Filter>Feature Extraction</Filter>
+    </ClCompile>
+    <ClCompile Include="Log.cpp">
+      <Filter>Log</Filter>
+    </ClCompile>
+    <ClCompile Include="Matrix1D.cpp">
+      <Filter>Matrix</Filter>
+    </ClCompile>
+    <ClCompile Include="Matrix2D.cpp">
+      <Filter>Matrix</Filter>
+    </ClCompile>
+    <ClCompile Include="Matrix3D.cpp">
+      <Filter>Matrix</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="GestureRecognition.h" />
+    <ClInclude Include="Viewer.h" />
+    <ClInclude Include="BlobDetection.h">
+      <Filter>Hand Detection</Filter>
+    </ClInclude>
+    <ClInclude Include="Gestures.h">
+      <Filter>Gestures</Filter>
+    </ClInclude>
+    <ClInclude Include="HMM.h">
+      <Filter>Classification</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageMoment.h">
+      <Filter>Feature Extraction</Filter>
+    </ClInclude>
+    <ClInclude Include="Log.h">
+      <Filter>Log</Filter>
+    </ClInclude>
+    <ClInclude Include="Matrix1D.h">
+      <Filter>Matrix</Filter>
+    </ClInclude>
+    <ClInclude Include="Matrix2D.h">
+      <Filter>Matrix</Filter>
+    </ClInclude>
+    <ClInclude Include="Matrix3D.h">
+      <Filter>Matrix</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Classification">
+      <UniqueIdentifier>{f089e77f-5a77-4cfb-b972-1134220023db}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Hand Detection">
+      <UniqueIdentifier>{2904c2d3-0234-4a75-8b8d-3d706274967a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Feature Extraction">
+      <UniqueIdentifier>{482e2aae-515c-4b03-96c7-aba2e9acdb34}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Matrix">
+      <UniqueIdentifier>{13c78444-6c62-48d4-b8c5-99294f7676bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Log">
+      <UniqueIdentifier>{cb21d284-de27-4aa1-b81d-efa199278e6b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Gestures">
+      <UniqueIdentifier>{81acf9c9-9248-4497-90eb-898c8b43278a}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

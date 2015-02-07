@@ -1,0 +1,21 @@
+﻿Build started 29/12/2013 23:28:40.
+     1>Project "C:\Users\Steven\Documents\FYP_Programs\PathViewer\PathViewer.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\x86_amd64\CL.exe /c /I"C:\Program Files\OpenNI2\Include\\" /I. /I. /Zi /nologo /W4 /WX /MP /Od /D _WINDLL /D _MBCS /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"x64\Debug\\" /Fd"x64\Debug\vc110.pdb" /Gd /TP /errorReport:prompt PathViewer.cpp
+         PathViewer.cpp
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Steven\Documents\FYP_Programs\PathViewer\x64\Debug\PathViewer.exe" /INCREMENTAL /NOLOGO /LIBPATH:C:\Users\Steven\Documents\FYP_Programs\PathViewer\x64\Debug\ /LIBPATH:"C:\Program Files\OpenNI2\Lib\\" /LIBPATH:..\..\ThirdParty\GL /WX glut64.lib OpenNI2.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Steven\Documents\FYP_Programs\PathViewer\x64\Debug\PathViewer.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Steven\Documents\FYP_Programs\PathViewer\x64\Debug\PathViewer.lib" /MACHINE:X64 x64\Debug\main.obj
+         x64\Debug\PathViewer.obj
+         PathViewer.vcxproj -> C:\Users\Steven\Documents\FYP_Programs\PathViewer\x64\Debug\PathViewer.exe
+       PostBuildEvent:
+         xcopy /D /S /F /Y "C:\Program Files\OpenNI2\Redist\\*" "C:\Users\Steven\Documents\FYP_Programs\PathViewer\x64\Debug\"
+         xcopy /D /F /Y "C:\Users\Steven\Documents\FYP_Programs\PathViewer\\glut64.dll" "C:\Users\Steven\Documents\FYP_Programs\PathViewer\x64\Debug\"
+         
+         :VCEnd
+         0 File(s) copied
+         0 File(s) copied
+     1>Done Building Project "C:\Users\Steven\Documents\FYP_Programs\PathViewer\PathViewer.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:01.10

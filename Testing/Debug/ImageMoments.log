@@ -1,0 +1,14 @@
+﻿Build started 04/01/2014 14:06:00.
+     1>Project "C:\Users\Steven\Documents\FYP_Programs\ImageMoments\ImageMoments.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I"C:\Program Files\OpenNI2\Include\\" /I. /I. /ZI /nologo /W4 /WX /MP /Od /Oy- /D _WINDLL /D _MBCS /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt Viewer.cpp
+         Viewer.cpp
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Steven\Documents\FYP_Programs\ImageMoments\Debug\ImageMoments.exe" /INCREMENTAL /NOLOGO /LIBPATH:C:\Users\Steven\Documents\FYP_Programs\ImageMoments\Debug\ /LIBPATH:..\..\ThirdParty\GL /WX glut32.lib OpenNI2.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Steven\Documents\FYP_Programs\ImageMoments\Debug\ImageMoments.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Steven\Documents\FYP_Programs\ImageMoments\Debug\ImageMoments.lib" /MACHINE:X86 Debug\main.obj
+         Debug\Viewer.obj
+     1>LINK : fatal error LNK1104: cannot open file 'OpenNI2.lib'
+     1>Done Building Project "C:\Users\Steven\Documents\FYP_Programs\ImageMoments\ImageMoments.vcxproj" (Build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:01.56
