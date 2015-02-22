@@ -50,26 +50,33 @@ Version:3.2 Date: 02/04/2014 details:Moved Blob Detection into a new gesture rec
 
 using namespace std;
 
+// Create GR global variable
 CVIA::GestureRecognition* cvia_gestureRecognition;
 
+//Create global variables for Open GL window values
 int mainWindow, sub1, sub2, sub3;
 
 PathViewer* PathViewer::ms_self = NULL;
 
+// What to do if nothing is happening
 void PathViewer::glutIdle()
 {
 	glutPostRedisplay();
 }
+
+// What to do when something is happening
 void PathViewer::glutDisplay()
 {
 	PathViewer::ms_self->display();
 }
 
+// What to do when a key is pressed on the keyboard
 void PathViewer::glutKeyboard(unsigned char key, int x, int y)
 {
 	PathViewer::ms_self->onKey(key, x, y);
 }
 
+// Constructor for pathViewer class
 PathViewer::PathViewer(const char* strSampleName, openni::Device& device, openni::VideoStream& depth, openni::VideoStream& color) :
 	m_device(device), m_depthStream(depth),m_colorStream(color), m_streams(NULL), m_pTexMap(NULL), viewerMode(RGB_PATH)
 
@@ -82,6 +89,7 @@ PathViewer::PathViewer(const char* strSampleName, openni::Device& device, openni
 	c_height = GL_WIN_SIZE_Y;
 }
 
+// De-Constructor for the pathViewer class
 PathViewer::~PathViewer()
 {
 	delete[] m_pTexMap;
@@ -94,21 +102,27 @@ PathViewer::~PathViewer()
 	}
 }
 
+// Initialise the pathViewer class
 openni::Status PathViewer::init(int argc, char **argv)
 {
+	// Variables for holding the two different video modes
 	openni::VideoMode depthVideoMode;
 	openni::VideoMode colorVideoMode;
 
+	// if the depth and colour streams are valid/available
 	if (m_depthStream.isValid() && m_colorStream.isValid())
 	{
+		// set the video modes
 		depthVideoMode = m_depthStream.getVideoMode();
 		colorVideoMode = m_colorStream.getVideoMode();
 
+		// get the heights and widths of both video modes
 		int depthWidth = depthVideoMode.getResolutionX();
 		int depthHeight = depthVideoMode.getResolutionY();
 		int colorWidth = colorVideoMode.getResolutionX();
 		int colorHeight = colorVideoMode.getResolutionY();
 
+		// Make sure that the heights and widths for both modes are the same
 		if (depthWidth == colorWidth &&
 			depthHeight == colorHeight)
 		{
@@ -123,24 +137,29 @@ openni::Status PathViewer::init(int argc, char **argv)
 			return openni::STATUS_ERROR;
 		}
 	}
+
+	// if only the depth stream is valid
 	else if (m_depthStream.isValid())
 	{
 		depthVideoMode = m_depthStream.getVideoMode();
 		m_width = depthVideoMode.getResolutionX();
 		m_height = depthVideoMode.getResolutionY();
 	}
+	// if only the color stream is valid
 	else if (m_colorStream.isValid())
 	{
 		colorVideoMode = m_colorStream.getVideoMode();
 		m_width = colorVideoMode.getResolutionX();
 		m_height = colorVideoMode.getResolutionY();
 	}
+	// if neither are valid
 	else
 	{
 		printf("Error - expects at least one of the streams to be valid...\n");
 		return openni::STATUS_ERROR;
 	}
 
+	// set the video streams
 	m_streams = new openni::VideoStream*[2];
 	m_streams[0] = &m_depthStream;
 	m_streams[1] = &m_colorStream;
@@ -155,6 +174,7 @@ openni::Status PathViewer::init(int argc, char **argv)
 	return initOpenGL(argc, argv);
 
 }
+// run the main Open GL loop
 openni::Status PathViewer::run()	//Does not return
 {
 	glutMainLoop();
@@ -162,6 +182,7 @@ openni::Status PathViewer::run()	//Does not return
 	return openni::STATUS_OK;
 }
 
+// display the main window
 void PathViewer::displayMain()
 {
 	glClearColor(1,1,1,1);
@@ -169,8 +190,10 @@ void PathViewer::displayMain()
 	glutSwapBuffers();
 }
 
+// display the instructions
 void PathViewer::displayInstructions()
 {
+	// Set the GL parameters. color etc.
 	glClearColor(0.7,0.3,0.7,1);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -183,7 +206,7 @@ void PathViewer::displayInstructions()
 	glPushMatrix();
 	glLoadIdentity();
 
-
+	// write out the instructions/gestures in the window
 	float xStart = 1.0f, yStart = 7.5f;
 	renderBitmapString(xStart, yStart, "Gestures");
 	yStart -= 0.5;
@@ -201,8 +224,10 @@ void PathViewer::displayInstructions()
 	glutSwapBuffers();
 }
 
+// display the log
 void PathViewer::displayLog()
 {
+	// set the Open GL parameters. color etc.
 	glClearColor(0,0,0,1);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -215,6 +240,7 @@ void PathViewer::displayLog()
 	glPushMatrix();
 	glLoadIdentity();
 
+	// write out the contents of the log
 	int xStart = 1.0f, ystart = 7.0f;
 	renderBitmapString(xStart, ystart, "Log:");
 	ystart -= 1.5;
@@ -232,6 +258,7 @@ void PathViewer::displayLog()
 	glutSwapBuffers();
 }
 
+// write out onto Open GL window
 void PathViewer::renderBitmapString(float x, float y, char *string)
 {
 	glRasterPos2d(x,y);
@@ -241,16 +268,21 @@ void PathViewer::renderBitmapString(float x, float y, char *string)
 	}
 }
 
+// Main display class
 void PathViewer::display()
 {
 	int changedIndex;
+	// wait for any data to come through the streams, returning an ok or error status
 	openni::Status rc = openni::OpenNI::waitForAnyStream(m_streams, 2, &changedIndex);
+
+	// if status is not okay.
 	if (rc != openni::STATUS_OK)
 	{
 		printf("Wait failed\n");
 		return;
 	}
 
+	// read the data from the stream into a frame
 	m_colorStream.readFrame(&m_colorFrame);
 	m_depthStream.readFrame(&m_depthFrame);
 
@@ -262,10 +294,10 @@ void PathViewer::display()
 	glLoadIdentity();
 	glOrtho(0, GL_WIN_SIZE_X, GL_WIN_SIZE_Y, 0, -1.0, 1.0);
 
+	// reserve memory the size of the open GL window
 	memset(m_pTexMap, 0, m_nTexMapX*m_nTexMapY*sizeof(openni::RGB888Pixel));
 
 	//switch case based on viewer selection
-
 	switch(viewNumber)
 	{
 	case 1:
@@ -316,29 +348,41 @@ void PathViewer::display()
 	glutSwapBuffers();
 }
 
+// display the blob detection
 void PathViewer::displayBlobDetection()
 {
+	// get the data from the stream into a depth pixel
 	const openni::DepthPixel* pDepthRow = (const openni::DepthPixel*)m_depthFrame.getData();
+	// get the number of depth pixels in a row
 	int rowSize = m_depthFrame.getStrideInBytes() / sizeof(openni::DepthPixel);
 
+	// initialise the GR with the h,w and row size
 	cvia_gestureRecognition->init(m_depthFrame.getHeight(), m_depthFrame.getWidth(), rowSize);
 
+	// from the first row to the last row
 	for (int y = 0; y < m_depthFrame.getHeight(); ++y)
 	{
+		// set the depth pixel to the start of the row
 		const openni::DepthPixel* pDepth = pDepthRow;
 
+		// interate through the row
 		for (int x = 0; x < m_depthFrame.getWidth(); ++x, ++pDepth)
 		{
+			// if the depth is less than a certain amount
 			if (*pDepth != 0 && *pDepth < 600)
 			{
+				// and the data to the GR
 				cvia_gestureRecognition->addData(x,y, *pDepth);
 			}
 		}
+		// on to the next row to process
 		pDepthRow += rowSize;
 	}
 
+	// if data has been found
 	if(cvia_gestureRecognition->dataDetected())
 	{
+		// display the data on the window
 		openni::RGB888Pixel* pTexRow = m_pTexMap + m_depthFrame.getCropOriginY() * m_nTexMapX;
 		const openni::DepthPixel* pDepthRow = (const openni::DepthPixel*)m_depthFrame.getData();
 		for (int y = 0; y < m_depthFrame.getHeight(); ++y)
@@ -358,14 +402,18 @@ void PathViewer::displayBlobDetection()
 			pTexRow += m_nTexMapX;
 		}
 	}
+	// if the log has been updated
 	if(cvia_gestureRecognition->updateLog())
 	{
+		// execute the gesture which was found (if any)
 		executeGesture(cvia_gestureRecognition->returnLog().at(cvia_gestureRecognition->returnLog().size()-1));
 		updateLog();
 	}
+	// in the gestures need updating
 	if(cvia_gestureRecognition->updateGestures()) updateGestures();
 }
 
+// display the feature extraction window
 void PathViewer::displayFeatureExtraction()
 {
 	const openni::DepthPixel* pDepthRow = (const openni::DepthPixel*)m_depthFrame.getData();
@@ -404,8 +452,10 @@ void PathViewer::displayFeatureExtraction()
 					pTex->b = 255;
 				}
 
+				// for each hand found
 				for(int i = 0; i < cvia_gestureRecognition->Hands.size(); i++)
 				{
+					// if the pixel location is part of the hand border
 					if(cvia_gestureRecognition->Hands.at(i).imageMoment.isBorder(x,y))
 					{
 						pTex->r = 255;
@@ -413,6 +463,7 @@ void PathViewer::displayFeatureExtraction()
 						pTex->b = 0;
 					}
 
+					// if the pixel location is part of the center of the hand
 					if(cvia_gestureRecognition->Hands.at(i).imageMoment.isCenter(x,y))
 					{
 						pTex->r = 0;
@@ -433,6 +484,7 @@ void PathViewer::displayFeatureExtraction()
 	if(cvia_gestureRecognition->updateGestures()) updateGestures();
 }
 
+// display the path window
 void PathViewer::displayPath()
 {
 	const openni::DepthPixel* pDepthRow = (const openni::DepthPixel*)m_depthFrame.getData();
@@ -471,11 +523,12 @@ void PathViewer::displayPath()
 					pTex->b = 255;
 				}
 
-
-
+				// for each hand which has been found
 				for(int i = 0; i < cvia_gestureRecognition->Hands.size(); i++)
 				{
+					// if the hand has been detected
 					if(!cvia_gestureRecognition->handDetected())
+						// if the pixel location is part of the border
 						if(cvia_gestureRecognition->Hands.at(i).imageMoment.isBorder(x,y))
 						{
 							pTex->r = 255;
@@ -483,6 +536,7 @@ void PathViewer::displayPath()
 							pTex->b = 0;
 						}
 
+						// if the pixel location is part of the path
 						if(cvia_gestureRecognition->Hands.at(i).m_path.at(x + (y * rowSize)) == 1)
 						{
 							pTex->r = 0;
@@ -503,6 +557,7 @@ void PathViewer::displayPath()
 	if(cvia_gestureRecognition->updateGestures()) updateGestures();
 }
 
+// display the classification window
 void PathViewer::displayClassification()
 {
 	const openni::DepthPixel* pDepthRow = (const openni::DepthPixel*)m_depthFrame.getData();
@@ -522,6 +577,7 @@ void PathViewer::displayClassification()
 		{
 			if (*pDepth != 0 && *pDepth < 600)
 			{
+				// convert to depth pixel coordinates to color coordinates
 				openni::CoordinateConverter().convertDepthToColor(m_depthStream, m_colorStream, x, y, *pDepth, colorPixelX, colorPixelY);
 				cvia_gestureRecognition->addData(*colorPixelX, *colorPixelY, *pDepth);
 			}
